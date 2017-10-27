@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="OFF"
+	packages="primera.logger">
+
+	<properties>
+		<property name="filename">C:/Users/Вета/IdeaProjects/MailruProject/log.log</property>
+		<property name="filepattern">logs/$${date:yyyy-MM}/primera-aqa-%d{MM-dd-yyyy}-%i.log.gz</property>
+		<property name="layotpattern">%d{HH:mm:ss} [%t] %-5level - %msg%n</property>
+		<property name="layotpatternconsole">%d{HH:mm:ss} [%t] %-5level [%C{1}:%M:%L] - %msg%n</property>
+		<property name="filesize">5 MB</property>
+	</properties>
+	
+	<appenders>
+	
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="${layotpatternconsole}" />
+		</Console>
+
+		<File name="filename1" fileName="log.log">
+			<PatternLayout>
+				<Pattern>%d %p %c{1.} [%t] %m %ex%n</Pattern>
+			</PatternLayout>
+		</File>
+	</appenders>
+	
+	<loggers>
+		<logger name="ExampleLogger" level="DEBUG" additivity="false">
+			<appender-ref ref="Console" level="DEBUG" />
+		</logger>
+
+		<logger name="ExampleLogger" level="INFO" additivity="true">
+			<appender-ref ref="filename1" level="INFO" />
+		</logger>
+		
+ 		<Root level="trace">
+			<AppenderRef ref="Console" />
+		</Root>
+
+	</loggers>
+</configuration>
