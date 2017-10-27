@@ -358,6 +358,13 @@ public class RegistrationTest extends BasicTestCase {
     }
 
     @Test
+    public void testBelowMaxPassword(){
+        String mPassword="123456789q123456789q123456789q12345678";
+        registrationPage.setPassword(mPassword);
+        assertEquals(mPassword, registrationPage.getPasswordField().getAttribute("value"));
+    }
+
+    @Test
     public void registrationWithValidData() throws Exception {
         String mPath = "D://mailruRegistration.xlsx";
         ExcelUtil.setExcelFile(mPath, "ValidData");
